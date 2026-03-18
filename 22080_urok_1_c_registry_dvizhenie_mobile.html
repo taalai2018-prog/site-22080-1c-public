@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22080 — Регистры 1С и движение данных после проведения документа</title>
+  <style>
+    :root {
+      --blue: #1f5fbf;
+      --blue-dark: #16468c;
+      --green: #1f8a4c;
+      --bg: #f5f8fc;
+      --card: #ffffff;
+      --text: #1c2430;
+      --muted: #5d6b7a;
+      --line: #d7e0ea;
+      --accent: #fff9eb;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 18px; }
+    .hero {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(10, 35, 70, 0.18);
+    }
+    .hero h1 { margin: 0 0 10px; font-size: 30px; }
+    .hero p { margin: 6px 0; font-size: 18px; }
+    .badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .nav a {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background: var(--green);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(22, 40, 70, 0.06);
+      scroll-margin-top: 20px;
+    }
+    .full { grid-column: span 12; }
+    .half { grid-column: span 6; }
+    .third { grid-column: span 4; }
+    h2 { margin: 0 0 10px; color: var(--blue-dark); font-size: 24px; }
+    h3 { margin: 12px 0 8px; color: var(--green); font-size: 20px; }
+    p, li { font-size: 18px; }
+    ul, ol { margin-top: 8px; }
+    .video-box {
+      aspect-ratio: 16/9;
+      width: 100%;
+      border-radius: 14px;
+      background: #0f1722;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e7eef8;
+      border: 2px dashed #8aa4c8;
+      text-align: center;
+      padding: 16px;
+      font-size: 18px;
+    }
+    .formula {
+      background: #eef7f0;
+      border-left: 5px solid var(--green);
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .table-wrap { overflow-x: auto; margin-top: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+      font-size: 17px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef3fb; color: var(--blue-dark); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .step {
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: bold;
+    }
+    .task, .submit {
+      background: var(--accent);
+      border: 1px solid #ecd38a;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .blank {
+      background: #fcfcfc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+    .line {
+      display: inline-block;
+      border-bottom: 1px solid #7c8b9b;
+      min-width: 130px;
+      height: 22px;
+      vertical-align: bottom;
+    }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 10px 12px;
+      font-size: 16px;
+    }
+    @media (max-width: 760px) {
+      .half, .third { grid-column: span 12; }
+      .hero h1 { font-size: 25px; }
+      h2 { font-size: 22px; }
+      p, li, table { font-size: 17px; }
+      .wrap { padding: 12px; }
+      .nav a { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>22080 — Регистры 1С и движение данных после проведения документа</h1>
+      <p><strong>Формат:</strong> кликабельный сайт-урок для Android, iPhone и компьютера</p>
+      <p><strong>Цель:</strong> понять, что такое регистры 1С, какие движения делает документ после проведения и почему именно из регистров формируются остатки и отчёты</p>
+      <div class="badge">Шаблон 22080 • Видео + теория + таблица + бланк + практика + вопросы</div>
+      <div class="nav">
+        <a href="#video">Видео</a>
+        <a href="#theory">Теория</a>
+        <a href="#logic">Логика</a>
+        <a href="#table">Таблица</a>
+        <a href="#blank">Бланк</a>
+        <a href="#practice">Практика</a>
+        <a href="#questions">Вопросы</a>
+        <a href="#submit">Что сдаёт студент</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card full" id="video">
+        <h2>1. Видео урок</h2>
+        <div class="video-box">
+          Здесь можно вставить ваше MP4-видео по теме<br>
+          «Регистры 1С и движение данных после проведения документа»<br><br>
+          Формат для вставки: video MP4 или ссылка на видео
+        </div>
+        <p><strong>Как использовать:</strong> студент сначала смотрит видео, затем изучает схему движения данных, таблицы и выполняет практическое задание.</p>
+      </section>
+
+      <section class="card half" id="theory">
+        <h2>2. Что такое регистры в 1С</h2>
+        <p><strong>Регистр</strong> — это внутреннее место хранения учётных данных в системе 1С. Именно туда документ записывает результат после проведения.</p>
+        <p>Проще говоря, документ оформляет хозяйственную операцию, а регистр запоминает её результат: сколько товара пришло, сколько продано, сколько денег поступило или выдано.</p>
+        <p>Если документ не проведён, движения по регистрам не формируются, а значит остатки и отчёты не меняются.</p>
+      </section>
+
+      <section class="card half" id="logic">
+        <h2>3. Главная логика темы</h2>
+        <div class="formula">Документ → Проведение → Движения по регистрам → Остатки → Отчёт</div>
+        <p>После проведения документ делает движения по регистрам. Эти движения изменяют учётные показатели, а на их основе строятся остатки, обороты и отчёты.</p>
+      </section>
+
+      <section class="card full">
+        <h2>4. Что делают регистры после проведения</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Документ</th>
+                <th>Какие движения возникают</th>
+                <th>Что меняется</th>
+                <th>Где видно результат</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Приход товара</td>
+                <td>Запись в регистр остатков товаров</td>
+                <td>Количество товара увеличивается</td>
+                <td>Остатки на складе, отчёт по товарам</td>
+              </tr>
+              <tr>
+                <td>Реализация товара</td>
+                <td>Списание из регистра остатков</td>
+                <td>Количество товара уменьшается</td>
+                <td>Продажи, остатки, обороты</td>
+              </tr>
+              <tr>
+                <td>ПКО</td>
+                <td>Запись в регистр кассы</td>
+                <td>Сумма денег в кассе увеличивается</td>
+                <td>Кассовый отчёт</td>
+              </tr>
+              <tr>
+                <td>РКО</td>
+                <td>Списание из регистра кассы</td>
+                <td>Сумма денег в кассе уменьшается</td>
+                <td>Кассовый отчёт</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card full" id="table">
+        <h2>5. Как проходит движение данных</h2>
+        <div class="steps">
+          <div class="step">1. Выбрать данные</div>
+          <div class="step">2. Создать документ</div>
+          <div class="step">3. Заполнить реквизиты</div>
+          <div class="step">4. Провести</div>
+          <div class="step">5. Создать движения</div>
+          <div class="step">6. Изменить остатки</div>
+          <div class="step">7. Получить отчёт</div>
+        </div>
+        <h3>Что важно понять студенту</h3>
+        <ul>
+          <li>Документ сам по себе — это форма операции.</li>
+          <li>Проведение запускает запись данных в регистры.</li>
+          <li>Регистры хранят движение и остатки.</li>
+          <li>Отчёты строятся не из формы документа, а из данных регистров.</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>6. Простая схема на примере склада</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Этап</th>
+                <th>Пример</th>
+                <th>Что должен понять студент</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Справочник</td>
+                <td>Товар «Бумага А4», склад «Основной»</td>
+                <td>Постоянные данные выбираются заранее</td>
+              </tr>
+              <tr>
+                <td>Документ</td>
+                <td>Приход товара на 30 пачек</td>
+                <td>Операция оформляется в документе</td>
+              </tr>
+              <tr>
+                <td>Регистр</td>
+                <td>Плюс 30 пачек в регистре остатков</td>
+                <td>Именно здесь хранится изменение</td>
+              </tr>
+              <tr>
+                <td>Отчёт</td>
+                <td>Остаток показывает 30 пачек</td>
+                <td>Отчёт берёт данные из регистра</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card full" id="blank">
+        <h2>7. Бланк для изучения: движения по регистру</h2>
+        <div class="blank">
+          <p><strong>Документ:</strong> <span class="line"></span></p>
+          <p><strong>Дата:</strong> <span class="line"></span></p>
+          <p><strong>Номер:</strong> <span class="line"></span></p>
+          <p><strong>Регистр:</strong> <span class="line"></span></p>
+          <p><strong>Что прибавилось:</strong> <span class="line"></span></p>
+          <p><strong>Что уменьшилось:</strong> <span class="line"></span></p>
+          <p><strong>Новый остаток:</strong> <span class="line"></span></p>
+          <p><strong>В каком отчёте видно:</strong> <span class="line"></span></p>
+        </div>
+        <p>Этот бланк помогает студенту увидеть не только документ, но и внутреннее движение данных после проведения.</p>
+      </section>
+
+      <section class="card half" id="practice">
+        <h2>8. Практическое задание</h2>
+        <div class="task">
+          <ol>
+            <li>Выберите один документ 1С: приход товара, реализация, ПКО или РКО.</li>
+            <li>Напишите, какой регистр изменится после проведения.</li>
+            <li>Объясните, какое движение произойдёт: плюс или минус.</li>
+            <li>Покажите, какой остаток изменится.</li>
+            <li>Укажите, в каком отчёте это можно увидеть.</li>
+            <li>Сделайте вывод, почему без регистра отчёт не появится правильно.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="card half" id="questions">
+        <h2>9. Контрольные вопросы</h2>
+        <ol>
+          <li>Что такое регистр в 1С простыми словами?</li>
+          <li>Когда появляются движения по регистрам?</li>
+          <li>Чем документ отличается от регистра?</li>
+          <li>Почему остатки меняются только после проведения?</li>
+          <li>Откуда отчёт берёт данные: из документа или из регистра?</li>
+          <li>Что случится, если документ проведён с ошибкой?</li>
+        </ol>
+      </section>
+
+      <section class="card full">
+        <h2>10. Итог урока</h2>
+        <p>Сегодня студент должен понять: документ оформляет операцию, но именно регистры хранят её результат. Поэтому правильная работа 1С строится по цепочке: документ проведён → движения записаны → остатки изменились → отчёт сформировался.</p>
+        <div class="formula">Регистры 1С = память системы о движении и остатках</div>
+      </section>
+
+      <section class="card full" id="submit">
+        <h2>11. Что сдаёт студент</h2>
+        <div class="submit">
+          <p><strong>После изучения урока студент должен отправить:</strong></p>
+          <ol>
+            <li>ФИО и группу</li>
+            <li>Заполненный бланк по движениям регистра</li>
+            <li>Ответы на контрольные вопросы</li>
+            <li>Короткое объяснение: как документ связан с регистром и отчётом</li>
+          </ol>
+          <p><strong>Форма ответа:</strong> текст в WhatsApp, фото, PDF или Google Form.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer">
+      22080 — Кликабельный сайт-урок по теме 1С • Регистры и движение данных
+    </div>
+  </div>
+</body>
+</html>

@@ -1,0 +1,342 @@
+<!DOCTYPE html>
+<!-- saved from url=(0306)file:///C:/Users/Admin/OneDrive/2026%20%D0%A3%D0%A0%D0%9E%D0%9A/%D1%83%D0%BD%D0%B8%D0%B2%D0%B5%D1%80%D1%81%D0%B8%D1%82%D0%B5%D1%82/%D1%8D%D1%82%D0%B0%D0%BB%D0%BE%D0%BD%20%D0%BC%D0%B0%D1%81%D1%82%D0%B5%D1%80%20%D1%82%D0%B5%D1%81%D1%82%20%D0%B2%D0%B8%D0%B4%D0%B5%D0%BE/22080_urok_1_c_spravochniki_mobile.html -->
+<html lang="ru"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>22080 — Справочники 1С и их связь с документами</title>
+  <style>
+    :root {
+      --blue: #1f5fbf;
+      --blue-dark: #16468c;
+      --green: #1f8a4c;
+      --bg: #f5f8fc;
+      --card: #ffffff;
+      --text: #1c2430;
+      --muted: #5d6b7a;
+      --line: #d7e0ea;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 18px;
+    }
+    .hero {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(10, 35, 70, 0.18);
+    }
+    .hero h1 {
+      margin: 0 0 10px;
+      font-size: 30px;
+    }
+    .hero p {
+      margin: 6px 0;
+      font-size: 18px;
+    }
+    .badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(22, 40, 70, 0.06);
+    }
+    .full { grid-column: span 12; }
+    .half { grid-column: span 6; }
+    .third { grid-column: span 4; }
+    h2 {
+      margin: 0 0 10px;
+      color: var(--blue-dark);
+      font-size: 24px;
+    }
+    h3 {
+      margin: 12px 0 8px;
+      color: var(--green);
+      font-size: 20px;
+    }
+    p, li { font-size: 18px; }
+    ul, ol { margin-top: 8px; }
+    .video-box {
+      aspect-ratio: 16/9;
+      width: 100%;
+      border-radius: 14px;
+      background: #0f1722;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e7eef8;
+      border: 2px dashed #8aa4c8;
+      text-align: center;
+      padding: 16px;
+      font-size: 18px;
+    }
+    .formula {
+      background: #eef7f0;
+      border-left: 5px solid var(--green);
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .table-wrap {
+      overflow-x: auto;
+      margin-top: 8px;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+      font-size: 17px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th {
+      background: #eef3fb;
+      color: var(--blue-dark);
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .step {
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: bold;
+    }
+    .task {
+      background: #fff9eb;
+      border: 1px solid #ecd38a;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .blank {
+      background: #fcfcfc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+    .line {
+      display: inline-block;
+      border-bottom: 1px solid #7c8b9b;
+      min-width: 130px;
+      height: 22px;
+      vertical-align: bottom;
+    }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 10px 12px;
+      font-size: 16px;
+    }
+    @media (max-width: 760px) {
+      .half, .third { grid-column: span 12; }
+      .hero h1 { font-size: 25px; }
+      h2 { font-size: 22px; }
+      p, li, table { font-size: 17px; }
+      .wrap { padding: 12px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>22080 — Справочники 1С и их связь с документами</h1>
+      <p><strong>Формат:</strong> мобильный мини‑урок для Android и iPhone</p>
+      <p><strong>Цель:</strong> понять, что такое справочник, как создаётся его элемент и как данные переходят в документ 1С</p>
+      <div class="badge">Шаблон 22080 • Видео + таблица + бланк + практика + вопросы</div>
+    </section>
+
+    <div class="grid">
+      <section class="card full">
+        <h2>1. Видео урок</h2>
+        <div class="video-box">
+          Здесь можно вставить ваше MP4‑видео по теме<br>
+          «Справочники 1С и их связь с документами»<br><br>
+          Формат для вставки: video MP4 или ссылка на видео
+        </div>
+        <p><strong>Как использовать:</strong> сначала студент смотрит короткое видео, потом сразу переходит к таблице и бланку документа.</p>
+      </section>
+
+      <section class="card half">
+        <h2>2. Что такое справочник</h2>
+        <p><strong>Справочник</strong> — это список постоянных данных, которые используются в 1С много раз.</p>
+        <p>Например: товары, контрагенты, склады, кассы, сотрудники, организации.</p>
+        <p>Если данные повторяются часто, их создают один раз в справочнике, а потом выбирают в документах.</p>
+      </section>
+
+      <section class="card half">
+        <h2>3. Главная логика темы</h2>
+        <div class="formula">Справочник → Документ → Проведение → Отчёт</div>
+        <p>Сначала создаются постоянные данные. Потом они используются в документе. После проведения документа данные влияют на учёт и видны в отчётах.</p>
+      </section>
+
+      <section class="card full">
+        <h2>4. Основные виды справочников 1С</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Справочник</th>
+                <th>Что хранит</th>
+                <th>Пример элемента</th>
+                <th>Где используется</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Номенклатура</td>
+                <td>Товары, материалы, услуги</td>
+                <td>Бумага А4</td>
+                <td>Приход, расход, продажа</td>
+              </tr>
+              <tr>
+                <td>Контрагенты</td>
+                <td>Поставщики и покупатели</td>
+                <td>ОсОО Азия Трейд</td>
+                <td>Закупка, реализация, оплата</td>
+              </tr>
+              <tr>
+                <td>Склады</td>
+                <td>Места хранения</td>
+                <td>Основной склад</td>
+                <td>Приход, перемещение, списание</td>
+              </tr>
+              <tr>
+                <td>Кассы</td>
+                <td>Наличные денежные средства</td>
+                <td>Основная касса</td>
+                <td>ПКО, РКО</td>
+              </tr>
+              <tr>
+                <td>Сотрудники</td>
+                <td>Работники организации</td>
+                <td>Касымалиев А. Н.</td>
+                <td>Кадры, операции, подписи</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>5. Как создаётся элемент справочника</h2>
+        <div class="steps">
+          <div class="step">1. Открыть 1С</div>
+          <div class="step">2. Найти раздел</div>
+          <div class="step">3. Открыть справочник</div>
+          <div class="step">4. Нажать «Создать»</div>
+          <div class="step">5. Заполнить реквизиты</div>
+          <div class="step">6. Сохранить</div>
+        </div>
+        <h3>Пример реквизитов товара</h3>
+        <ul>
+          <li>Наименование</li>
+          <li>Код</li>
+          <li>Единица измерения</li>
+          <li>Цена</li>
+          <li>Группа</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>6. Как справочник связан с документом</h2>
+        <p>Документ не создаётся из воздуха. Он использует данные из справочников.</p>
+        <div class="steps">
+          <div class="step">Товар из справочника</div>
+          <div class="step">Поставщик из справочника</div>
+          <div class="step">Склад из справочника</div>
+          <div class="step">Заполнение документа</div>
+          <div class="step">Проведение</div>
+          <div class="step">Результат в отчёте</div>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>7. Бланк документа: Приход товара</h2>
+        <div class="blank">
+          <p><strong>Документ:</strong> Приход товара</p>
+          <p><strong>Дата:</strong> <span class="line"></span></p>
+          <p><strong>Номер:</strong> <span class="line"></span></p>
+          <p><strong>Товар:</strong> <span class="line"></span></p>
+          <p><strong>Поставщик:</strong> <span class="line"></span></p>
+          <p><strong>Склад:</strong> <span class="line"></span></p>
+          <p><strong>Количество:</strong> <span class="line"></span></p>
+          <p><strong>Цена:</strong> <span class="line"></span></p>
+          <p><strong>Сумма:</strong> <span class="line"></span></p>
+        </div>
+        <p>Этот бланк показывает, как документ собирается из данных справочников.</p>
+      </section>
+
+      <section class="card half">
+        <h2>8. Практическое задание</h2>
+        <div class="task">
+          <ol>
+            <li>Найдите в таблице один товар.</li>
+            <li>Выберите одного поставщика.</li>
+            <li>Выберите один склад.</li>
+            <li>Заполните бланк документа «Приход товара».</li>
+            <li>Объясните, какие данные взяты из справочников.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="card half">
+        <h2>9. Контрольные вопросы</h2>
+        <ol>
+          <li>Что такое справочник?</li>
+          <li>Для чего нужен справочник в 1С?</li>
+          <li>Чем справочник отличается от документа?</li>
+          <li>Что такое реквизиты документа?</li>
+          <li>Как связаны справочник и документ?</li>
+        </ol>
+      </section>
+
+      <section class="card full">
+        <h2>10. Итог урока</h2>
+        <p>Сегодня студент должен запомнить главное: справочник хранит постоянные данные, документ использует эти данные, проведение влияет на учёт, а отчёт показывает результат.</p>
+        <div class="formula">Справочник → Документ → Проведение → Отчёт</div>
+      </section>
+    </div>
+
+    <div class="footer">
+      22080 — Учебный мини‑сайт по теме 1С • Мобильная версия урока
+    </div>
+  </div>
+
+
+</body></html>

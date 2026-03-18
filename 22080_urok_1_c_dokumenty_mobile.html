@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22080 — Документы 1С</title>
+  <style>
+    :root {
+      --blue: #1f5fbf;
+      --blue-dark: #16468c;
+      --green: #1f8a4c;
+      --bg: #f5f8fc;
+      --card: #ffffff;
+      --text: #1c2430;
+      --muted: #5d6b7a;
+      --line: #d7e0ea;
+      --accent: #fff9eb;
+    }
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 18px; }
+    .hero {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(10, 35, 70, 0.18);
+    }
+    .hero h1 { margin: 0 0 10px; font-size: 30px; }
+    .hero p { margin: 6px 0; font-size: 18px; }
+    .badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .nav a, .btn {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background: var(--green);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 16px;
+      border: none;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(22, 40, 70, 0.06);
+      scroll-margin-top: 20px;
+    }
+    .full { grid-column: span 12; }
+    .half { grid-column: span 6; }
+    .third { grid-column: span 4; }
+    h2 { margin: 0 0 10px; color: var(--blue-dark); font-size: 24px; }
+    h3 { margin: 12px 0 8px; color: var(--green); font-size: 20px; }
+    p, li { font-size: 18px; }
+    ul, ol { margin-top: 8px; }
+    .video-box {
+      aspect-ratio: 16/9;
+      width: 100%;
+      border-radius: 14px;
+      background: #0f1722;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e7eef8;
+      border: 2px dashed #8aa4c8;
+      text-align: center;
+      padding: 16px;
+      font-size: 18px;
+    }
+    .formula {
+      background: #eef7f0;
+      border-left: 5px solid var(--green);
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .table-wrap { overflow-x: auto; margin-top: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 650px;
+      font-size: 17px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef3fb; color: var(--blue-dark); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .step {
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: bold;
+    }
+    .task, .submit {
+      background: var(--accent);
+      border: 1px solid #ecd38a;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .blank {
+      background: #fcfcfc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+    .line {
+      display: inline-block;
+      border-bottom: 1px solid #7c8b9b;
+      min-width: 130px;
+      height: 22px;
+      vertical-align: bottom;
+    }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 10px 12px;
+      font-size: 16px;
+    }
+    @media (max-width: 760px) {
+      .half, .third { grid-column: span 12; }
+      .hero h1 { font-size: 25px; }
+      h2 { font-size: 22px; }
+      p, li, table { font-size: 17px; }
+      .wrap { padding: 12px; }
+      .nav a, .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>22080 — Документы 1С</h1>
+      <p><strong>Формат:</strong> кликабельный сайт-урок для Android, iPhone и компьютера</p>
+      <p><strong>Цель:</strong> понять, что такое документ в 1С, какие бывают документы, какие реквизиты в них заполняются и как документ связан со справочником, проведением и отчётом</p>
+      <div class="badge">Шаблон 22080 • Видео + схема + бланк + практика + вопросы</div>
+      <div class="nav">
+        <a href="#video">Видео</a>
+        <a href="#theory">Теория</a>
+        <a href="#table">Виды документов</a>
+        <a href="#blank">Бланк</a>
+        <a href="#practice">Практика</a>
+        <a href="#questions">Вопросы</a>
+        <a href="#submit">Что сдаёт студент</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card full" id="video">
+        <h2>1. Видео урок</h2>
+        <div class="video-box">
+          Здесь можно вставить ваше MP4-видео по теме<br>
+          «Документы 1С»<br><br>
+          Формат для вставки: video MP4 или ссылка на видео
+        </div>
+        <p><strong>Как использовать:</strong> сначала студент смотрит видео, потом переходит к объяснению, бланку и практике.</p>
+      </section>
+
+      <section class="card half" id="theory">
+        <h2>2. Что такое документ 1С</h2>
+        <p><strong>Документ</strong> — это запись конкретной хозяйственной операции в системе 1С.</p>
+        <p>Например: приход товара, реализация, кассовый ордер, перемещение, списание.</p>
+        <p>Документ показывает не постоянные данные, а то, <strong>что произошло</strong> в организации.</p>
+      </section>
+
+      <section class="card half">
+        <h2>3. Главная логика темы</h2>
+        <div class="formula">Справочник → Документ → Проведение → Отчёт</div>
+        <p>Документ использует данные из справочников, после проведения влияет на учёт, а результат виден в отчёте.</p>
+      </section>
+
+      <section class="card full">
+        <h2>4. Чем документ отличается от справочника</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Понятие</th>
+                <th>Что хранит</th>
+                <th>Пример</th>
+                <th>Назначение</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Справочник</td>
+                <td>Постоянные данные</td>
+                <td>Товар, поставщик, склад</td>
+                <td>Основа для заполнения документов</td>
+              </tr>
+              <tr>
+                <td>Документ</td>
+                <td>Конкретную операцию</td>
+                <td>Приход, продажа, ПКО</td>
+                <td>Отражает событие в учёте</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card full" id="table">
+        <h2>5. Основные виды документов 1С</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Документ</th>
+                <th>Что отражает</th>
+                <th>Какие справочники использует</th>
+                <th>Результат</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Приход товара</td>
+                <td>Поступление товара</td>
+                <td>Номенклатура, Контрагенты, Склады</td>
+                <td>Увеличение остатка на складе</td>
+              </tr>
+              <tr>
+                <td>Реализация</td>
+                <td>Продажа товара</td>
+                <td>Номенклатура, Контрагенты, Склады</td>
+                <td>Уменьшение остатка, отражение продажи</td>
+              </tr>
+              <tr>
+                <td>ПКО</td>
+                <td>Поступление наличных денег</td>
+                <td>Кассы, Контрагенты</td>
+                <td>Увеличение суммы в кассе</td>
+              </tr>
+              <tr>
+                <td>РКО</td>
+                <td>Выдача наличных денег</td>
+                <td>Кассы, Контрагенты</td>
+                <td>Уменьшение суммы в кассе</td>
+              </tr>
+              <tr>
+                <td>Перемещение</td>
+                <td>Перенос товара между складами</td>
+                <td>Номенклатура, Склады</td>
+                <td>Изменение остатков по складам</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card full">
+        <h2>6. Как создаётся документ</h2>
+        <div class="steps">
+          <div class="step">1. Открыть 1С</div>
+          <div class="step">2. Выбрать раздел</div>
+          <div class="step">3. Открыть журнал документов</div>
+          <div class="step">4. Нажать «Создать»</div>
+          <div class="step">5. Заполнить реквизиты</div>
+          <div class="step">6. Сохранить</div>
+          <div class="step">7. Провести</div>
+        </div>
+        <h3>Что такое реквизиты документа</h3>
+        <p>Реквизиты документа — это поля, которые нужно заполнить.</p>
+        <ul>
+          <li>Дата</li>
+          <li>Номер</li>
+          <li>Товар</li>
+          <li>Поставщик или покупатель</li>
+          <li>Склад</li>
+          <li>Количество</li>
+          <li>Цена</li>
+          <li>Сумма</li>
+        </ul>
+      </section>
+
+      <section class="card full" id="blank">
+        <h2>7. Бланк документа: Приход товара</h2>
+        <div class="blank">
+          <p><strong>Документ:</strong> Приход товара</p>
+          <p><strong>Дата:</strong> <span class="line"></span></p>
+          <p><strong>Номер:</strong> <span class="line"></span></p>
+          <p><strong>Товар:</strong> <span class="line"></span></p>
+          <p><strong>Поставщик:</strong> <span class="line"></span></p>
+          <p><strong>Склад:</strong> <span class="line"></span></p>
+          <p><strong>Количество:</strong> <span class="line"></span></p>
+          <p><strong>Цена:</strong> <span class="line"></span></p>
+          <p><strong>Сумма:</strong> <span class="line"></span></p>
+        </div>
+        <p>Этот бланк показывает, что документ собирается из реквизитов, а многие данные для него берутся из справочников.</p>
+      </section>
+
+      <section class="card half" id="practice">
+        <h2>8. Практическое задание</h2>
+        <div class="task">
+          <ol>
+            <li>Выберите один товар из справочника.</li>
+            <li>Выберите одного поставщика.</li>
+            <li>Выберите один склад.</li>
+            <li>Заполните бланк документа «Приход товара».</li>
+            <li>Объясните, какие реквизиты вы заполнили.</li>
+            <li>Скажите, что изменится после проведения документа.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="card half" id="questions">
+        <h2>9. Контрольные вопросы</h2>
+        <ol>
+          <li>Что такое документ в 1С?</li>
+          <li>Чем документ отличается от справочника?</li>
+          <li>Какие документы 1С вы запомнили?</li>
+          <li>Что такое реквизиты документа?</li>
+          <li>Что означает проведение документа?</li>
+          <li>Как документ связан с отчётом?</li>
+        </ol>
+      </section>
+
+      <section class="card full">
+        <h2>10. Итог урока</h2>
+        <p>Сегодня студент должен понять: документ в 1С отражает конкретную операцию, использует данные из справочников, заполняется через реквизиты, после проведения влияет на учёт, а затем его результат можно увидеть в отчёте.</p>
+        <div class="formula">Документ — это событие в системе 1С</div>
+      </section>
+
+      <section class="card full" id="submit">
+        <h2>11. Что сдаёт студент</h2>
+        <div class="submit">
+          <p><strong>После изучения урока студент должен отправить:</strong></p>
+          <ol>
+            <li>ФИО и группу</li>
+            <li>Заполненный бланк документа</li>
+            <li>Ответы на контрольные вопросы</li>
+            <li>Короткое объяснение: чем документ отличается от справочника</li>
+          </ol>
+          <p><strong>Форма ответа:</strong> текст в WhatsApp, фото, PDF или Google Form.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer">
+      22080 — Кликабельный сайт-урок по теме 1С • Документы 1С
+    </div>
+  </div>
+</body>
+</html>

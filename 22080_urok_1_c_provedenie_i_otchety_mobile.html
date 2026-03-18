@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>22080 — Проведение документов в 1С и формирование отчётов</title>
+  <style>
+    :root {
+      --blue: #1f5fbf;
+      --blue-dark: #16468c;
+      --green: #1f8a4c;
+      --bg: #f5f8fc;
+      --card: #ffffff;
+      --text: #1c2430;
+      --muted: #5d6b7a;
+      --line: #d7e0ea;
+      --accent: #fff9eb;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "Times New Roman", serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.55;
+    }
+    .wrap { max-width: 980px; margin: 0 auto; padding: 18px; }
+    .hero {
+      background: linear-gradient(135deg, var(--blue), var(--blue-dark));
+      color: white;
+      border-radius: 18px;
+      padding: 22px;
+      box-shadow: 0 10px 28px rgba(10, 35, 70, 0.18);
+    }
+    .hero h1 { margin: 0 0 10px; font-size: 30px; }
+    .hero p { margin: 6px 0; font-size: 18px; }
+    .badge {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.18);
+      border: 1px solid rgba(255,255,255,0.25);
+      padding: 7px 12px;
+      border-radius: 999px;
+      font-size: 14px;
+    }
+    .nav {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-top: 16px;
+    }
+    .nav a {
+      display: inline-block;
+      text-decoration: none;
+      color: white;
+      background: var(--green);
+      padding: 10px 14px;
+      border-radius: 12px;
+      font-size: 16px;
+    }
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: 16px;
+      margin-top: 18px;
+    }
+    .card {
+      background: var(--card);
+      border: 1px solid var(--line);
+      border-radius: 18px;
+      padding: 18px;
+      box-shadow: 0 6px 18px rgba(22, 40, 70, 0.06);
+      scroll-margin-top: 20px;
+    }
+    .full { grid-column: span 12; }
+    .half { grid-column: span 6; }
+    .third { grid-column: span 4; }
+    h2 { margin: 0 0 10px; color: var(--blue-dark); font-size: 24px; }
+    h3 { margin: 12px 0 8px; color: var(--green); font-size: 20px; }
+    p, li { font-size: 18px; }
+    ul, ol { margin-top: 8px; }
+    .video-box {
+      aspect-ratio: 16/9;
+      width: 100%;
+      border-radius: 14px;
+      background: #0f1722;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #e7eef8;
+      border: 2px dashed #8aa4c8;
+      text-align: center;
+      padding: 16px;
+      font-size: 18px;
+    }
+    .formula {
+      background: #eef7f0;
+      border-left: 5px solid var(--green);
+      padding: 14px;
+      border-radius: 12px;
+      font-size: 20px;
+      font-weight: bold;
+    }
+    .table-wrap { overflow-x: auto; margin-top: 8px; }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      min-width: 680px;
+      font-size: 17px;
+    }
+    th, td {
+      border: 1px solid var(--line);
+      padding: 10px;
+      text-align: left;
+      vertical-align: top;
+    }
+    th { background: #eef3fb; color: var(--blue-dark); }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 10px;
+      margin-top: 12px;
+    }
+    .step {
+      background: #f8fbff;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 12px;
+      text-align: center;
+      font-size: 17px;
+      font-weight: bold;
+    }
+    .task, .submit {
+      background: var(--accent);
+      border: 1px solid #ecd38a;
+      border-radius: 14px;
+      padding: 14px;
+    }
+    .blank {
+      background: #fcfcfc;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      padding: 14px;
+      margin-top: 10px;
+    }
+    .line {
+      display: inline-block;
+      border-bottom: 1px solid #7c8b9b;
+      min-width: 130px;
+      height: 22px;
+      vertical-align: bottom;
+    }
+    .footer {
+      text-align: center;
+      color: var(--muted);
+      padding: 24px 10px 12px;
+      font-size: 16px;
+    }
+    @media (max-width: 760px) {
+      .half, .third { grid-column: span 12; }
+      .hero h1 { font-size: 25px; }
+      h2 { font-size: 22px; }
+      p, li, table { font-size: 17px; }
+      .wrap { padding: 12px; }
+      .nav a { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <section class="hero">
+      <h1>22080 — Проведение документов в 1С и формирование отчётов</h1>
+      <p><strong>Формат:</strong> кликабельный сайт-урок для Android, iPhone и компьютера</p>
+      <p><strong>Цель:</strong> понять, что означает проведение документа в 1С, какие изменения происходят после проведения и как эти данные попадают в отчёты</p>
+      <div class="badge">Шаблон 22080 • Видео + теория + таблица + бланк + практика + вопросы</div>
+      <div class="nav">
+        <a href="#video">Видео</a>
+        <a href="#theory">Теория</a>
+        <a href="#logic">Логика</a>
+        <a href="#table">Таблица</a>
+        <a href="#blank">Бланк</a>
+        <a href="#practice">Практика</a>
+        <a href="#questions">Вопросы</a>
+        <a href="#submit">Что сдаёт студент</a>
+      </div>
+    </section>
+
+    <div class="grid">
+      <section class="card full" id="video">
+        <h2>1. Видео урок</h2>
+        <div class="video-box">
+          Здесь можно вставить ваше MP4-видео по теме<br>
+          «Проведение документов в 1С и формирование отчётов»<br><br>
+          Формат для вставки: video MP4 или ссылка на видео
+        </div>
+        <p><strong>Как использовать:</strong> сначала студент смотрит видео, потом изучает схему, таблицу и выполняет практику.</p>
+      </section>
+
+      <section class="card half" id="theory">
+        <h2>2. Что такое проведение документа</h2>
+        <p><strong>Проведение</strong> — это момент, когда документ не просто сохраняется, а начинает влиять на учёт в системе 1С.</p>
+        <p>До проведения документ может быть только черновиком. После проведения он изменяет остатки, суммы, кассу, склад или другие учётные данные.</p>
+        <p>Например, документ «Приход товара» после проведения увеличивает остаток товара на складе.</p>
+      </section>
+
+      <section class="card half" id="logic">
+        <h2>3. Главная логика темы</h2>
+        <div class="formula">Справочник → Документ → Проведение → Отчёт</div>
+        <p>Сначала выбираются данные из справочников, потом создаётся документ, после проведения он отражается в учёте, а затем виден в отчёте.</p>
+      </section>
+
+      <section class="card full">
+        <h2>4. Что меняется после проведения</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Документ</th>
+                <th>Что было до проведения</th>
+                <th>Что стало после проведения</th>
+                <th>Где видно результат</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Приход товара</td>
+                <td>Товар ещё не отражён в учёте</td>
+                <td>Остаток на складе увеличился</td>
+                <td>Отчёт по остаткам товаров</td>
+              </tr>
+              <tr>
+                <td>Реализация товара</td>
+                <td>Продажа ещё не учтена</td>
+                <td>Остаток уменьшился, продажа отражена</td>
+                <td>Отчёт по продажам</td>
+              </tr>
+              <tr>
+                <td>ПКО</td>
+                <td>Деньги ещё не поступили в кассу</td>
+                <td>Сумма в кассе увеличилась</td>
+                <td>Кассовый отчёт</td>
+              </tr>
+              <tr>
+                <td>РКО</td>
+                <td>Выдача денег ещё не отражена</td>
+                <td>Сумма в кассе уменьшилась</td>
+                <td>Кассовый отчёт</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card full" id="table">
+        <h2>5. Как документ попадает в отчёт</h2>
+        <div class="steps">
+          <div class="step">1. Выбрать данные</div>
+          <div class="step">2. Создать документ</div>
+          <div class="step">3. Заполнить реквизиты</div>
+          <div class="step">4. Сохранить</div>
+          <div class="step">5. Провести</div>
+          <div class="step">6. Открыть отчёт</div>
+          <div class="step">7. Проверить результат</div>
+        </div>
+        <h3>Что важно понять студенту</h3>
+        <ul>
+          <li>Без проведения документ не влияет на учёт.</li>
+          <li>Проведённый документ меняет данные в системе.</li>
+          <li>Отчёт показывает итог уже проведённых документов.</li>
+          <li>Ошибочно проведённый документ даёт неправильный отчёт.</li>
+        </ul>
+      </section>
+
+      <section class="card full">
+        <h2>6. Пример связи документа и отчёта</h2>
+        <div class="table-wrap">
+          <table>
+            <thead>
+              <tr>
+                <th>Этап</th>
+                <th>Пример</th>
+                <th>Что видит студент</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Справочник</td>
+                <td>Товар «Бумага А4», склад «Основной»</td>
+                <td>Постоянные данные для выбора</td>
+              </tr>
+              <tr>
+                <td>Документ</td>
+                <td>Приход товара на 20 пачек</td>
+                <td>Заполненный бланк операции</td>
+              </tr>
+              <tr>
+                <td>Проведение</td>
+                <td>Документ проведён</td>
+                <td>Остаток на складе увеличился</td>
+              </tr>
+              <tr>
+                <td>Отчёт</td>
+                <td>Отчёт по остаткам показывает 20 пачек</td>
+                <td>Результат операции в учёте</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="card full" id="blank">
+        <h2>7. Бланк для изучения: Приход товара и результат в отчёте</h2>
+        <div class="blank">
+          <p><strong>Документ:</strong> Приход товара</p>
+          <p><strong>Дата:</strong> <span class="line"></span></p>
+          <p><strong>Номер:</strong> <span class="line"></span></p>
+          <p><strong>Товар:</strong> <span class="line"></span></p>
+          <p><strong>Склад:</strong> <span class="line"></span></p>
+          <p><strong>Количество:</strong> <span class="line"></span></p>
+          <p><strong>Цена:</strong> <span class="line"></span></p>
+          <p><strong>Сумма:</strong> <span class="line"></span></p>
+          <p><strong>После проведения в отчёте видно:</strong> <span class="line"></span></p>
+        </div>
+        <p>Этот бланк помогает студенту увидеть, что документ и отчёт связаны напрямую через проведение.</p>
+      </section>
+
+      <section class="card half" id="practice">
+        <h2>8. Практическое задание</h2>
+        <div class="task">
+          <ol>
+            <li>Выберите товар и склад.</li>
+            <li>Создайте документ «Приход товара».</li>
+            <li>Заполните все основные реквизиты.</li>
+            <li>Объясните, что произойдёт после проведения.</li>
+            <li>Скажите, в каком отчёте это будет видно.</li>
+            <li>Напишите, почему нельзя оставлять ошибки в проведённом документе.</li>
+          </ol>
+        </div>
+      </section>
+
+      <section class="card half" id="questions">
+        <h2>9. Контрольные вопросы</h2>
+        <ol>
+          <li>Что означает проведение документа в 1С?</li>
+          <li>Чем сохранение отличается от проведения?</li>
+          <li>Почему проведённый документ влияет на учёт?</li>
+          <li>Какие изменения происходят после проведения прихода товара?</li>
+          <li>Как документ связан с отчётом?</li>
+          <li>Почему ошибка в документе приводит к ошибке в отчёте?</li>
+        </ol>
+      </section>
+
+      <section class="card full">
+        <h2>10. Итог урока</h2>
+        <p>Сегодня студент должен понять: проведение документа — это главный момент, когда операция начинает влиять на систему 1С. Только после проведения результат отражается в учёте и становится виден в отчётах.</p>
+        <div class="formula">Проведение документа = влияние на учёт и отчёты</div>
+      </section>
+
+      <section class="card full" id="submit">
+        <h2>11. Что сдаёт студент</h2>
+        <div class="submit">
+          <p><strong>После изучения урока студент должен отправить:</strong></p>
+          <ol>
+            <li>ФИО и группу</li>
+            <li>Заполненный бланк документа</li>
+            <li>Ответы на контрольные вопросы</li>
+            <li>Короткое объяснение: что изменяется после проведения документа</li>
+          </ol>
+          <p><strong>Форма ответа:</strong> текст в WhatsApp, фото, PDF или Google Form.</p>
+        </div>
+      </section>
+    </div>
+
+    <div class="footer">
+      22080 — Кликабельный сайт-урок по теме 1С • Проведение документов и отчёты
+    </div>
+  </div>
+</body>
+</html>
