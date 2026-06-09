@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>УМК — Маркетинг</title>
+  <link rel="stylesheet" href="uploaded/assets/style.css">
+  <script src="uploaded/assets/script.js" defer></script>
+</head>
+<body>
+  <div class="topbar"><div class="inner"><div class="brand">22080 • УМК</div><nav class="nav"><a href="index.html">Главная</a><a href="umk_university_index.html">УМК Университет</a></nav></div></div>
+  <div class="wrap">
+    <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+
+    <section class="hero screen active">
+      <div class="badge">УМК • МКУ 2025–2026</div>
+      <h1>Маркетинг</h1>
+      <p>Кафедра «Экономика и менеджмент» | Преподаватель: Сапаралиев Т.Н.</p>
+    </section>
+
+    <section class="card screen">
+      <h2>1. Цель и задачи</h2>
+      <p><b>Цель:</b> сформировать систему знаний о маркетинге как концепции рыночного управления предприятием.</p>
+      <ul>
+        <li>Изучить сущность и функции маркетинга.</li>
+        <li>Освоить инструменты маркетингового комплекса (4P).</li>
+        <li>Научиться проводить маркетинговые исследования.</li>
+      </ul>
+    </section>
+
+    <section class="card screen">
+      <h2>2. Место дисциплины</h2>
+      <div class="qa"><b>Направление:</b> Менеджмент / Экономика<br><b>Кредиты:</b> 3 | <b>Часов:</b> 90<br><b>Лекции:</b> 30 ч. | <b>Практика:</b> 15 ч. | <b>СРС:</b> 45 ч.</div>
+      <p>Связана с управлением продажами, логистикой, стратегическим менеджментом.</p>
+    </section>
+
+    <section class="card screen">
+      <h2>3. Тематический план</h2>
+      <ul>
+        <li>Тема 1. Сущность и концепции маркетинга.</li>
+        <li>Тема 2. Маркетинговая среда предприятия.</li>
+        <li>Тема 3. Маркетинговые исследования.</li>
+        <li>Тема 4. Сегментация рынка и целевой маркетинг.</li>
+        <li>Тема 5. Товарная политика (Product).</li>
+        <li>Тема 6. Ценовая политика (Price).</li>
+        <li>Тема 7. Сбытовая политика (Place).</li>
+        <li>Тема 8. Коммуникационная политика (Promotion).</li>
+      </ul>
+    </section>
+
+    <section class="card screen">
+      <h2>4. Комплекс маркетинга 4P</h2>
+      <div class="qa"><b>Product (Товар)</b> — характеристики, качество, упаковка, марка.</div>
+      <div class="qa"><b>Price (Цена)</b> — стратегия ценообразования, скидки, условия оплаты.</div>
+      <div class="qa"><b>Place (Место)</b> — каналы сбыта, дистрибуция, логистика.</div>
+      <div class="qa"><b>Promotion (Продвижение)</b> — реклама, PR, личные продажи, стимулирование сбыта.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>5. Практикум: расчет прибыли</h2>
+      <label for="revenue">Выручка от продаж (сом)</label>
+      <input id="revenue" type="number" inputmode="decimal" placeholder="Например: 2000000">
+      <label for="expense">Затраты на маркетинг и производство (сом)</label>
+      <input id="expense" type="number" inputmode="decimal" placeholder="Например: 1400000">
+      <button type="button" onclick="calcProfit()">Рассчитать прибыль</button>
+      <div id="calcResult" class="result">Здесь появится результат.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>6. Мини-тест</h2>
+      <label for="q1">Что входит в комплекс маркетинга 4P?</label>
+      <select id="q1"><option value="">Выберите ответ</option><option value="a">Планирование, производство, персонал, прибыль</option><option value="b">Товар, цена, место, продвижение</option><option value="c">Только реклама и PR</option></select>
+      <label for="q2">Что такое сегментация рынка?</label>
+      <select id="q2"><option value="">Выберите ответ</option><option value="a">Разделение рынка на группы потребителей с похожими характеристиками</option><option value="b">Запрет конкуренции</option><option value="c">Фиксация цен</option></select>
+      <button type="button" onclick="checkQuiz()">Проверить тест</button>
+      <div id="quizResult" class="result">Здесь появится результат.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>7. Итог</h2>
+      <p>Маркетинг — это не только реклама, но и вся система ориентации предприятия на потребителя. Знание инструментов маркетинга позволяет создавать востребованные продукты.</p>
+      <div class="qa"><b>Эталон 22080:</b> УМК разработан по стандарту МКУ. Преподаватель: Сапаралиев Т.Н.</div>
+    </section>
+
+    <div class="footer">22080 • УМК Маркетинг • МКУ 2025–2026</div>
+  </div>
+  <div class="app-nav"><div class="inner"><button type="button" class="secondary" onclick="prevScreen()">Назад</button><button type="button" onclick="nextScreen()">Дальше</button></div></div>
+</body>
+</html>

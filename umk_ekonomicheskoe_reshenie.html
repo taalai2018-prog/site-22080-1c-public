@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>УМК — Принятие экономических решений</title>
+  <link rel="stylesheet" href="uploaded/assets/style.css">
+  <script src="uploaded/assets/script.js" defer></script>
+</head>
+<body>
+  <div class="topbar"><div class="inner"><div class="brand">22080 • УМК</div><nav class="nav"><a href="index.html">Главная</a><a href="umk_university_index.html">УМК Университет</a></nav></div></div>
+  <div class="wrap">
+    <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+
+    <section class="hero screen active">
+      <div class="badge">УМК • МКУ 2025–2026</div>
+      <h1>Принятие экономических решений</h1>
+      <p>Кафедра «Экономика и менеджмент» | Преподаватель: Сапаралиев Т.Н.</p>
+    </section>
+
+    <section class="card screen">
+      <h2>1. Цель и задачи</h2>
+      <p><b>Цель:</b> сформировать у студентов умение принимать обоснованные экономические решения в условиях неопределенности.</p>
+      <ul>
+        <li>Изучить теорию принятия решений.</li>
+        <li>Освоить количественные и качественные методы анализа.</li>
+        <li>Научиться оценивать риски при принятии решений.</li>
+      </ul>
+    </section>
+
+    <section class="card screen">
+      <h2>2. Место дисциплины</h2>
+      <div class="qa"><b>Направление:</b> Экономика / Менеджмент<br><b>Кредиты:</b> 3 | <b>Часов:</b> 90<br><b>Лекции:</b> 30 ч. | <b>Практика:</b> 15 ч. | <b>СРС:</b> 45 ч.</div>
+      <p>Связана с экономической теорией, статистикой, стратегическим менеджментом.</p>
+    </section>
+
+    <section class="card screen">
+      <h2>3. Тематический план</h2>
+      <ul>
+        <li>Тема 1. Теория принятия решений.</li>
+        <li>Тема 2. Классификация экономических решений.</li>
+        <li>Тема 3. Условия неопределенности и риска.</li>
+        <li>Тема 4. Методы анализа решений.</li>
+        <li>Тема 5. Дерево решений.</li>
+        <li>Тема 6. Многокритериальный выбор.</li>
+        <li>Тема 7. Поведенческие аспекты принятия решений.</li>
+        <li>Тема 8. Ответственность за экономические решения.</li>
+      </ul>
+    </section>
+
+    <section class="card screen">
+      <h2>4. Ключевые понятия</h2>
+      <div class="qa"><b>Экономическое решение</b> — выбор из альтернативных вариантов действий для достижения экономической цели.</div>
+      <div class="qa"><b>Риск</b> — возможность отклонения фактического результата от ожидаемого.</div>
+      <div class="qa"><b>Дерево решений</b> — графический инструмент анализа альтернатив и их вероятных исходов.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>5. Практикум: анализ прибыли</h2>
+      <label for="revenue">Ожидаемая выручка (сом)</label>
+      <input id="revenue" type="number" inputmode="decimal" placeholder="Например: 800000">
+      <label for="expense">Ожидаемые затраты (сом)</label>
+      <input id="expense" type="number" inputmode="decimal" placeholder="Например: 600000">
+      <button type="button" onclick="calcProfit()">Рассчитать прибыль</button>
+      <div id="calcResult" class="result">Здесь появится результат.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>6. Мини-тест</h2>
+      <label for="q1">Что такое «дерево решений»?</label>
+      <select id="q1"><option value="">Выберите ответ</option><option value="a">Случайный выбор варианта</option><option value="b">Графический анализ альтернатив и исходов</option><option value="c">Список сотрудников предприятия</option></select>
+      <label for="q2">Как называется отклонение результата от ожидаемого?</label>
+      <select id="q2"><option value="">Выберите ответ</option><option value="a">Риск</option><option value="b">Прибыль</option><option value="c">Амортизация</option></select>
+      <button type="button" onclick="checkQuiz()">Проверить тест</button>
+      <div id="quizResult" class="result">Здесь появится результат.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>7. Итог</h2>
+      <p>Грамотное принятие экономических решений — основа конкурентоспособности предприятия. Системный анализ и оценка рисков снижают потери и повышают эффективность.</p>
+      <div class="qa"><b>Эталон 22080:</b> УМК разработан по стандарту МКУ. Преподаватель: Сапаралиев Т.Н.</div>
+    </section>
+
+    <div class="footer">22080 • УМК Принятие экономических решений • МКУ 2025–2026</div>
+  </div>
+  <div class="app-nav"><div class="inner"><button type="button" class="secondary" onclick="prevScreen()">Назад</button><button type="button" onclick="nextScreen()">Дальше</button></div></div>
+</body>
+</html>
