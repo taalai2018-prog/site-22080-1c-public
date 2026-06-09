@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>УМК — Логистика и управление цепями поставок</title>
+  <link rel="stylesheet" href="uploaded/assets/style.css">
+  <script src="uploaded/assets/script.js" defer></script>
+</head>
+<body>
+  <div class="topbar"><div class="inner"><div class="brand">22080 • УМК</div><nav class="nav"><a href="index.html">Главная</a><a href="umk_university_index.html">УМК Университет</a></nav></div></div>
+  <div class="wrap">
+    <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+
+    <section class="hero screen active">
+      <div class="badge">УМК • МКУ 2025–2026</div>
+      <h1>Логистика и управление цепями поставок</h1>
+      <p>Кафедра «Экономика и менеджмент» | Преподаватель: Сапаралиев Т.Н.</p>
+    </section>
+
+    <section class="card screen">
+      <h2>1. Цель и задачи</h2>
+      <p><b>Цель:</b> сформировать знания о логистике как системе управления материальными и информационными потоками.</p>
+      <ul>
+        <li>Изучить основы логистики и управления цепями поставок.</li>
+        <li>Освоить методы оптимизации товародвижения.</li>
+        <li>Научиться управлять запасами и складским хозяйством.</li>
+      </ul>
+    </section>
+
+    <section class="card screen">
+      <h2>2. Место дисциплины</h2>
+      <div class="qa"><b>Направление:</b> Менеджмент / Экономика<br><b>Кредиты:</b> 3 | <b>Часов:</b> 90<br><b>Лекции:</b> 30 ч. | <b>Практика:</b> 15 ч. | <b>СРС:</b> 45 ч.</div>
+      <p>Связана с производственным менеджментом, маркетингом, управлением запасами.</p>
+    </section>
+
+    <section class="card screen">
+      <h2>3. Тематический план</h2>
+      <ul>
+        <li>Тема 1. Понятие и виды логистики.</li>
+        <li>Тема 2. Логистические системы и цепи поставок.</li>
+        <li>Тема 3. Транспортная логистика.</li>
+        <li>Тема 4. Складская логистика.</li>
+        <li>Тема 5. Управление запасами.</li>
+        <li>Тема 6. Закупочная логистика.</li>
+        <li>Тема 7. Информационные системы в логистике.</li>
+        <li>Тема 8. Оценка эффективности логистики.</li>
+      </ul>
+    </section>
+
+    <section class="card screen">
+      <h2>4. Ключевые понятия</h2>
+      <div class="qa"><b>Логистика</b> — управление потоками (материальными, информационными, финансовыми) от источника до потребителя.</div>
+      <div class="qa"><b>Цепь поставок</b> — совокупность организаций, вовлеченных в движение товара от производителя к потребителю.</div>
+      <div class="qa"><b>Страховой запас</b> — дополнительный запас для защиты от непредвиденных ситуаций.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>5. Практикум: расчет прибыли</h2>
+      <label for="revenue">Выручка от поставок (сом)</label>
+      <input id="revenue" type="number" inputmode="decimal" placeholder="Например: 1200000">
+      <label for="expense">Логистические затраты (сом)</label>
+      <input id="expense" type="number" inputmode="decimal" placeholder="Например: 800000">
+      <button type="button" onclick="calcProfit()">Рассчитать прибыль</button>
+      <div id="calcResult" class="result">Здесь появится результат.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>6. Мини-тест</h2>
+      <label for="q1">Что такое цепь поставок?</label>
+      <select id="q1"><option value="">Выберите ответ</option><option value="a">Только перевозка товаров</option><option value="b">Совокупность организаций от производителя до потребителя</option><option value="c">Только складское хранение</option></select>
+      <label for="q2">Что такое страховой запас?</label>
+      <select id="q2"><option value="">Выберите ответ</option><option value="a">Дополнительный запас на случай непредвиденных ситуаций</option><option value="b">Запас для продажи на страховом рынке</option><option value="c">Неиспользуемые остатки на складе</option></select>
+      <button type="button" onclick="checkQuiz()">Проверить тест</button>
+      <div id="quizResult" class="result">Здесь появится результат.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>7. Итог</h2>
+      <p>Логистика — ключевой инструмент снижения затрат и повышения скорости обслуживания клиентов. Оптимизация цепей поставок дает конкурентное преимущество.</p>
+      <div class="qa"><b>Эталон 22080:</b> УМК разработан по стандарту МКУ. Преподаватель: Сапаралиев Т.Н.</div>
+    </section>
+
+    <div class="footer">22080 • УМК Логистика • МКУ 2025–2026</div>
+  </div>
+  <div class="app-nav"><div class="inner"><button type="button" class="secondary" onclick="prevScreen()">Назад</button><button type="button" onclick="nextScreen()">Дальше</button></div></div>
+</body>
+</html>

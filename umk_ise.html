@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>УМК — Информационные системы в экономике</title>
+  <link rel="stylesheet" href="uploaded/assets/style.css">
+  <script src="uploaded/assets/script.js" defer></script>
+</head>
+<body>
+  <div class="topbar"><div class="inner"><div class="brand">22080 • УМК</div><nav class="nav"><a href="index.html">Главная</a><a href="umk_university_index.html">УМК Университет</a></nav></div></div>
+  <div class="wrap">
+    <div class="progress"><div id="progressBar" class="progress-bar"></div></div>
+
+    <section class="hero screen active">
+      <div class="badge">УМК • МКУ 2025–2026</div>
+      <h1>Информационные системы в экономике</h1>
+      <p>Кафедра «Экономика и менеджмент» | Преподаватель: Сапаралиев Т.Н.</p>
+    </section>
+
+    <section class="card screen">
+      <h2>1. Цель и задачи</h2>
+      <p><b>Цель:</b> сформировать знания об информационных системах как инструменте управления экономикой предприятия.</p>
+      <ul>
+        <li>Изучить виды и структуру информационных систем.</li>
+        <li>Освоить применение ИС в учете, планировании и анализе.</li>
+        <li>Познакомиться с 1С:Предприятие и ERP-системами.</li>
+      </ul>
+    </section>
+
+    <section class="card screen">
+      <h2>2. Место дисциплины</h2>
+      <div class="qa"><b>Направление:</b> Экономика / Менеджмент<br><b>Кредиты:</b> 3 | <b>Часов:</b> 90<br><b>Лекции:</b> 30 ч. | <b>Практика:</b> 15 ч. | <b>СРС:</b> 45 ч.</div>
+      <p>Связана с бухгалтерским учетом, ИТ в менеджменте, базами данных.</p>
+    </section>
+
+    <section class="card screen">
+      <h2>3. Тематический план</h2>
+      <ul>
+        <li>Тема 1. Информация и информационные системы.</li>
+        <li>Тема 2. Классификация ИС в экономике.</li>
+        <li>Тема 3. ERP-системы и их роль.</li>
+        <li>Тема 4. 1С:Предприятие — структура и возможности.</li>
+        <li>Тема 5. Автоматизация бухгалтерского учета.</li>
+        <li>Тема 6. Базы данных в экономике.</li>
+        <li>Тема 7. Электронный документооборот.</li>
+        <li>Тема 8. Безопасность информационных систем.</li>
+      </ul>
+    </section>
+
+    <section class="card screen">
+      <h2>4. Ключевые понятия</h2>
+      <div class="qa"><b>Информационная система</b> — совокупность методов, процессов и программных средств для хранения и обработки информации.</div>
+      <div class="qa"><b>ERP-система</b> — комплексная система управления ресурсами предприятия (Enterprise Resource Planning).</div>
+      <div class="qa"><b>1С:Предприятие</b> — российская платформа для автоматизации бухгалтерии, торговли и управления.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>5. Практикум: расчет прибыли</h2>
+      <label for="revenue">Выручка (сом)</label>
+      <input id="revenue" type="number" inputmode="decimal" placeholder="Например: 900000">
+      <label for="expense">Затраты (сом)</label>
+      <input id="expense" type="number" inputmode="decimal" placeholder="Например: 650000">
+      <button type="button" onclick="calcProfit()">Рассчитать прибыль</button>
+      <div id="calcResult" class="result">Здесь появится результат.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>6. Мини-тест</h2>
+      <label for="q1">Что такое ERP-система?</label>
+      <select id="q1"><option value="">Выберите ответ</option><option value="a">Система управления ресурсами предприятия</option><option value="b">Только бухгалтерская программа</option><option value="c">Только CRM-система</option></select>
+      <label for="q2">Что автоматизирует 1С:Предприятие?</label>
+      <select id="q2"><option value="">Выберите ответ</option><option value="a">Бухгалтерию, торговлю и управление предприятием</option><option value="b">Только управление складом</option><option value="c">Только расчет зарплаты</option></select>
+      <button type="button" onclick="checkQuiz()">Проверить тест</button>
+      <div id="quizResult" class="result">Здесь появится результат.</div>
+    </section>
+
+    <section class="card screen">
+      <h2>7. Итог</h2>
+      <p>Информационные системы — неотъемлемая часть современной экономики. Умение работать с ИС и понимать их структуру — ключевое требование к экономисту XXI века.</p>
+      <div class="qa"><b>Эталон 22080:</b> УМК разработан по стандарту МКУ. Преподаватель: Сапаралиев Т.Н.</div>
+    </section>
+
+    <div class="footer">22080 • УМК ИСЭ • МКУ 2025–2026</div>
+  </div>
+  <div class="app-nav"><div class="inner"><button type="button" class="secondary" onclick="prevScreen()">Назад</button><button type="button" onclick="nextScreen()">Дальше</button></div></div>
+</body>
+</html>
